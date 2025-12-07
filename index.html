@@ -3,120 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaunchPad Operations // Apex Protocol</title>
+    <title>LaunchPad Operations // Structural Integrity</title>
+    
     <style>
+        /* TERMINAL V6.0 / GHOST PROTOCOL AESTHETIC */
         :root {
-            /* Apex Protocol Color Palette */
-            --color-background: #0D0D0F; /* Deep Dark Slate */
-            --color-text: #FFFFFF;
-            --color-accent: #00AEEF; /* Clean Cyan/Blue */
-            --color-card-bg: #1A1A1A; /* Subtle Gray Card Background */
-            --font-family-sans: 'Helvetica Neue', Arial, sans-serif;
+            --color-black: #000000;
+            --color-white: #FFFFFF;
+            --color-gray: #333333;
+            --color-red-scan: #CC4400; /* Original orange/red hue for contrast */
+            --font-mono: 'Space Mono', monospace; 
         }
         body {
-            background-color: var(--color-background);
-            color: var(--color-text);
-            font-family: var(--font-family-sans);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-family: var(--font-mono); 
             margin: 0;
-            padding: 0;
+            height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            text-align: center;
+            justify-content: center;
+            overflow: hidden;
         }
+
         .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 900px;
             width: 90%;
-            max-width: 800px;
-            padding: 40px;
-            background-color: var(--color-card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Removed border to simplify the dark aesthetic */
+            background: rgba(0, 0, 0, 0.5); 
         }
-        .header {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--color-accent);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+
+        .header-status {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+            letter-spacing: 5px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
-        .status-text {
-            font-size: 1.1rem;
-            color: #AAAAAA;
-            margin-bottom: 40px;
-        }
-        .description-box {
-            background-color: #000000;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-            text-align: left;
-            border: 1px solid #333333;
-        }
-        .description-box h2 {
-            font-size: 1.2rem;
-            color: var(--color-accent);
+
+        .main-caption {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            letter-spacing: 2px;
             margin-top: 0;
-            border-bottom: 1px solid #333333;
-            padding-bottom: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 50px;
         }
-        .description-box p {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #CCCCCC;
+
+        /* LT-1 Data Cube Visual (Simulated) */
+        .lt1-cube {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 60px;
+            background: repeating-linear-gradient(
+                -45deg,
+                var(--color-black),
+                var(--color-black) 8px,
+                var(--color-red-scan) 9px,
+                var(--color-red-scan) 10px
+            );
+            border: 2px solid var(--color-red-scan);
+            box-shadow: 0 0 15px rgba(204, 68, 0, 0.8);
+            transform: rotateX(20deg) rotateY(-45deg); 
+            transition: box-shadow 0.3s ease-in-out;
         }
+        
+        .lt1-cube:hover {
+             box-shadow: 0 0 30px rgba(204, 68, 0, 1);
+        }
+
         .audit-link {
             display: inline-block;
-            padding: 15px 35px;
-            font-size: 1.1rem;
+            padding: 12px 30px;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
             font-weight: 700;
+            color: var(--color-white);
+            background-color: transparent;
+            border: 1px solid var(--color-red-scan);
             text-decoration: none;
-            color: var(--color-background);
-            background-color: var(--color-accent);
-            border-radius: 6px;
-            transition: background-color 0.3s, transform 0.1s;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0, 174, 239, 0.4);
+            letter-spacing: 3px;
+            transition: background-color 0.3s, color 0.3s;
         }
+
         .audit-link:hover {
-            background-color: #008DCC;
-            transform: translateY(-1px);
+            background-color: var(--color-red-scan);
+            color: var(--color-black);
+            border-color: var(--color-black);
         }
-        .footer-status {
-            margin-top: 50px;
-            font-size: 0.75rem;
-            color: #555555;
-            letter-spacing: 1px;
+
+        /* Minimal Gridsystem Overlay */
+        .gridsystem-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(51, 51, 51, 0.05) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(51, 51, 51, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none; 
         }
     </style>
 </head>
 <body>
+    <div class="gridsystem-overlay"></div>
     <div class="container">
-        <div class="header">
-            LAUNCHPAD OPERATIONS
-        </div>
-        <div class="status-text">
-            APEX PROTOCOL V1.0 - JAN 02 // 2026 ACTIVATION
-        </div>
+        <div class="header-status">STRUCTURAL ACTIVATION: JAN 02 // 2026.</div>
+        
+        <div class="lt1-cube"></div>
 
-        <div class="description-box">
-            <h2>SECURE MVD INITIATION</h2>
-            <p>
-                The LaunchPad MVD (Minimum Viable Definition) Protocol is the required first stage for structural qualification. This process initiates the LT-1 Data Cube for GME v5.3 scoring, ensuring the Solo Architect Sprint aligns with the January 2nd compliance mandate. Required qualification fee: $1,500 USD.
-            </p>
-        </div>
-
+        <h1 class="main-caption">STRUCTURAL ACTIVATION: JAN 02 // 2026.</h1>
+        
         <a href="secure-mvd-intake.html" class="audit-link">INITIATE AUDIT PROTOCOL ></a>
         
-        <div class="footer-status">
-            SYSTEM STATUS: ONLINE. DNS RESOLUTION OPTIMIZED.
-        </div>
+        <div class="header-status" style="margin-top: 50px; font-size: 0.7rem; letter-spacing: 2px;">LT-1 DATA CUBE // ZERO-DISCLOSURE PROTOCOL ACTIVE</div>
     </div>
 </body>
 </html>
-
-
